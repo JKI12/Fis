@@ -4,4 +4,6 @@
 
     <string name="pref_key_rear_camera_preview_size" translatable="false">rcpvs</string>
     <string name="pref_key_rear_camera_picture_size" translatable="false">rcpts</string>
+
+    <string name="flash_cd">Toggle flash</string>
 </resources>
