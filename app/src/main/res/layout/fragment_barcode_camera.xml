@@ -23,7 +23,7 @@
         android:clickable="true"
         android:focusable="true"
         android:contentDescription="@string/flash_cd"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="@android:color/white"
         app:borderWidth="0dp"
         app:fabSize="normal" />
 

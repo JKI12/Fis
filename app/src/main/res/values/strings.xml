@@ -6,4 +6,8 @@
     <string name="pref_key_rear_camera_picture_size" translatable="false">rcpts</string>
 
     <string name="flash_cd">Toggle flash</string>
+
+    <string name="point_at_barcode">Point me at a barcode!</string>
+    <string name="searching">Searching…</string>
+    <string name="move_closer">Move me closer!</string>
 </resources>
