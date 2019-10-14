@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fis</string>
+    <string name="inventory">Inventory</string>
+
+    <string name="pref_key_rear_camera_preview_size" translatable="false">rcpvs</string>
+    <string name="pref_key_rear_camera_picture_size" translatable="false">rcpts</string>
+</resources>
