@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1088508297022",
+    "firebase_url": "https://flatinventorysystem.firebaseio.com",
+    "project_id": "flatinventorysystem",
+    "storage_bucket": "flatinventorysystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088508297022:android:1521d94f60ac7d6ffc366f",
+        "android_client_info": {
+          "package_name": "me.king.jake.fis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088508297022-jkvmqbnd6fnpcrmvufh819a4o2s0kimo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.king.jake.fis",
+            "certificate_hash": "87cc7de611dcc58930515893cb162745c359c633"
+          }
+        },
+        {
+          "client_id": "1088508297022-2e463nfclegrjcv4c66pu72spst4el2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3OmN8qqA0fIgMROXW-4wYPSFSTOUOgE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088508297022-2e463nfclegrjcv4c66pu72spst4el2q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
