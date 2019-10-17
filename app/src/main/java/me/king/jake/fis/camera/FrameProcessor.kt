@@ -5,7 +5,7 @@ import java.nio.ByteBuffer
 
 interface  FrameProcessor {
     fun process(
-        byteBuffer: ByteBuffer,
+        data: ByteBuffer,
         frameMetadata: FrameMetadata,
         graphicOverlay: GraphicOverlay
     )

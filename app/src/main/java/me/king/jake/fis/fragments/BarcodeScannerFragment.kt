@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.king.jake.fis.R
+import me.king.jake.fis.barcode.BarcodeProcessor
 import me.king.jake.fis.camera.CameraSource
 import me.king.jake.fis.camera.WorkflowModel
 import me.king.jake.fis.views.CameraSourcePeview
@@ -108,7 +109,7 @@ class BarcodeScannerFragment : Fragment() {
 
         workflowModel?.markCameraFrozen()
         currentWorkflowState = WorkflowModel.WorkflowState.NOT_STARTED
-//        cameraSource?.setFrameProcessor()
+        cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
         workflowModel?.setWorkflowState(WorkflowModel.WorkflowState.DETECTING)
     }
 
