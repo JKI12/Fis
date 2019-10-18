@@ -7,4 +7,8 @@
     <color name="md_white_1000">#ffffff</color>
     <color name="alpha_background">#59000000</color>
     <color name="transparent">#00000000</color>
+
+    <color name="barcode_reticle_stroke">#40000000</color>
+    <color name="barcode_background">#7E000000</color>
+    <color name="barcode_reticle_ripple">#9AFFFFFF</color>
 </resources>

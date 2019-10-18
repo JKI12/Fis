@@ -1,8 +1,10 @@
 package me.king.jake.fis
 
+import android.graphics.RectF
 import android.hardware.Camera
 import android.util.Log
 import me.king.jake.fis.camera.CameraSizePair
+import me.king.jake.fis.views.GraphicOverlay
 import kotlin.math.abs
 
 object Utils {
@@ -37,5 +39,22 @@ object Utils {
         }
 
         return validPreviewSizes
+    }
+
+    fun getBarcodeReticleBox(overlay: GraphicOverlay): RectF {
+        overlay.context
+        val overlayWidth = overlay.width.toFloat()
+        val overlayHeight= overlay.height.toFloat()
+        val boxWidth = overlayWidth * 80 / 100
+        val boxHeight = overlayHeight * 30 / 100
+        val cx = overlayWidth / 2
+        val cy = overlayHeight / 2
+
+        return RectF(
+            cx - boxWidth / 2,
+            cy - boxHeight / 2,
+            cx + boxWidth / 2,
+            cy + boxHeight / 2
+        )
     }
 }

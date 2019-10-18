@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="preview_top_bar_height">64dp</dimen>
+
+    <dimen name="reticle_stroke">4dp</dimen>
+    <dimen name="reticle_corner_radius">8dp</dimen>
+    <dimen name="reticle_ripple_size_offset">30dp</dimen>
+    <dimen name="reticle_ripple_stroke_width">4dp</dimen>
 </resources>
