@@ -10,4 +10,6 @@
     <string name="point_at_barcode">Point me at a barcode!</string>
     <string name="searching">Searching…</string>
     <string name="move_closer">Move me closer!</string>
+
+    <string name="inventory_view_add_new_item">Add new item</string>
 </resources>

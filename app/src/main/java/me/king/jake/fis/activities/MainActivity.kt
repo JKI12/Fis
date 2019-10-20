@@ -11,16 +11,16 @@ import me.king.jake.fis.camera.WorkflowModel
 import java.util.*
 
 class MainActivity : BaseActivity() {
-    private val TAG = this.javaClass.canonicalName
-
     var workflowModel: WorkflowModel? = null
     private var currentWorkflowState: WorkflowModel.WorkflowState? = null
+
+    private lateinit var pager : ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val pager : ViewPager = findViewById(R.id.wrapper)
+        pager = findViewById(R.id.wrapper)
 
         pager.apply {
             adapter = MainPagerAdapter(supportFragmentManager)
@@ -42,10 +42,14 @@ class MainActivity : BaseActivity() {
 
             when (workflowState) {
                 WorkflowModel.WorkflowState.SEARCHED -> {
-                    Log.i(TAG, "Barcode: ${workflowModel!!.detectedBarcode.value?.barcode}")
+                    changePage(1)
                 }
                 else -> return@Observer
             }
         })
+    }
+
+    fun changePage(id: Int) {
+        pager.setCurrentItem(id, true)
     }
 }

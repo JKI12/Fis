@@ -11,4 +11,6 @@
     <color name="barcode_reticle_stroke">#40000000</color>
     <color name="barcode_background">#7E000000</color>
     <color name="barcode_reticle_ripple">#9AFFFFFF</color>
+
+    <color name="inventory_view_top_bar">#FF4081</color>
 </resources>

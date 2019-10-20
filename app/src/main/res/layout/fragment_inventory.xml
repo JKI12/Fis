@@ -46,13 +46,6 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add_white_24dp"
-        android:clickable="true"
-        android:focusable="true"/>
+    <include layout="@layout/bottom_inventory_view" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
