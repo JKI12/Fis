@@ -6,14 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.king.jake.fis.R
+import me.king.jake.fis.activities.MainActivity
 import me.king.jake.fis.barcode.BarcodeProcessor
 import me.king.jake.fis.camera.CameraSource
 import me.king.jake.fis.camera.WorkflowModel
@@ -25,11 +23,12 @@ import java.util.*
 class BarcodeScannerFragment : Fragment() {
     private val TAG = this.javaClass.canonicalName
 
+    private var workflowModel: WorkflowModel? = null
+    private var currentWorkflowState: WorkflowModel.WorkflowState? = null
+
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePeview? = null
     private var graphicOverlay: GraphicOverlay? = null
-    private var workflowModel: WorkflowModel? = null
-    private var currentWorkflowState: WorkflowModel.WorkflowState? = null
 
     private var infoChip: Chip? = null
     private var flashFab: FloatingActionButton? = null
@@ -70,7 +69,7 @@ class BarcodeScannerFragment : Fragment() {
     }
 
     private fun setupWorkflowModel() {
-        workflowModel = ViewModelProviders.of(this).get(WorkflowModel::class.java)
+        workflowModel = (activity as MainActivity).workflowModel
 
         workflowModel!!.workflowState.observe(this, Observer { workflowState ->
             if (workflowState == null || Objects.equals(currentWorkflowState, workflowState)) {

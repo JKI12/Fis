@@ -1,14 +1,15 @@
 package me.king.jake.fis.barcode
 
 import android.animation.ValueAnimator
+import android.os.Handler
 import android.util.Log
 import androidx.core.animation.addListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector
-import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import me.king.jake.fis.Api
 import me.king.jake.fis.animations.CameraReticleAnimator
 import me.king.jake.fis.camera.FrameProcessorBase
 import me.king.jake.fis.camera.WorkflowModel
@@ -16,7 +17,6 @@ import me.king.jake.fis.graphics.BarcodeLoading
 import me.king.jake.fis.graphics.BarcodeReticle
 import me.king.jake.fis.views.GraphicOverlay
 import java.io.IOException
-import java.lang.Exception
 
 class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel: WorkflowModel) : FrameProcessorBase<List<FirebaseVisionBarcode>>() {
     private val TAG = this.javaClass.canonicalName
@@ -56,7 +56,21 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
             loadingAnimator.start()
             graphicOverlay.add(BarcodeLoading(graphicOverlay, loadingAnimator))
             workflowModel.setWorkflowState(WorkflowModel.WorkflowState.SEARCHING)
-            // Trigger API Request
+
+            if (barcodeInCentre.rawValue !== null) {
+                try {
+                    val mainThreadHandler = Handler(graphicOverlay.context.mainLooper)
+
+                    Api.sendBarcode(barcodeInCentre.rawValue!!) {
+                        mainThreadHandler.post {
+                            workflowModel.detectedBarcode.value = it
+                            workflowModel.setWorkflowState(WorkflowModel.WorkflowState.SEARCHED)
+                        }
+                    }
+                } catch (ex: Exception) {
+                    Log.e(TAG, ex.message ?: "There has been an error")
+                }
+            }
         }
 
         graphicOverlay.invalidate()
