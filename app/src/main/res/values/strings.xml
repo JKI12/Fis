@@ -11,7 +11,9 @@
     <string name="searching">Searching…</string>
     <string name="move_closer">Move me closer!</string>
 
-    <string name="inventory_view_add_new_item">Add new item</string>
+    <string name="overview_add_new">Add new item</string>
+    <string name="overview_overview">Overview</string>
+    <string name="overview_editing">Editing current item</string>
 
     <string name="input_item_info_title">Item Info</string>
     <string name="input_properties_title">Properties</string>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/inventory_wrapper"
+    android:background="@android:color/white">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/inventory_view_top_bar"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:fontFamily="@font/qs"
+        android:textColor="@android:color/white"
+        android:id="@+id/overview_title"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/overview_steps"
+        android:layout_weight="1"
+        android:overScrollMode="never" />
+
+    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/overview_steps_indicator"
+        app:dotsColor="@color/inventory_view_top_bar"
+        app:dotsStrokeColor="@color/inventory_view_top_bar"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="16dp"
+        app:dotsSpacing="4dp"
+        app:dotsStrokeWidth="2dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/large_margin"
+        android:layout_weight="0"/>
+</LinearLayout>

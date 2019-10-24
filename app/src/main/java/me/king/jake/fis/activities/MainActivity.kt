@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pager = findViewById(R.id.wrapper)
+        pager = findViewById(R.id.content_wrapper)
 
         pager.apply {
             adapter = MainPagerAdapter(supportFragmentManager)
@@ -50,5 +50,13 @@ class MainActivity : BaseActivity() {
 
     private fun changePage(id: Int) {
         pager.setCurrentItem(id, true)
+    }
+
+    override fun onBackPressed() {
+        when {
+            supportFragmentManager.backStackEntryCount > 0 -> supportFragmentManager.popBackStack()
+            pager.currentItem != 1 -> changePage(1)
+            else -> super.onBackPressed()
+        }
     }
 }

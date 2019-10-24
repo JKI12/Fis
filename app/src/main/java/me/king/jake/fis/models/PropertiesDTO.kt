@@ -1,12 +1,13 @@
 package me.king.jake.fis.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.google.gson.reflect.TypeToken
+import kotlinx.android.parcel.Parcelize
 
-class PropertiesDTO {
+@Parcelize
+class PropertiesDTO(
     @SerializedName("quantity")
     val quantity: Int = 1
-
-    @SerializedName("attributes")
-    val attributes: TypeToken<HashMap<String, String>>? = null
-}
+//    @SerializedName("attributes")
+//    val attributes: TypeToken<HashMap<String, String>>? = null
+) : Parcelable

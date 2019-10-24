@@ -45,7 +45,4 @@
                 android:fontFamily="@font/qs"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/bottom_inventory_view" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
