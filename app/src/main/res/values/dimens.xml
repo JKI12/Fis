@@ -6,4 +6,10 @@
     <dimen name="reticle_corner_radius">8dp</dimen>
     <dimen name="reticle_ripple_size_offset">30dp</dimen>
     <dimen name="reticle_ripple_stroke_width">4dp</dimen>
+
+    <dimen name="header_1">48sp</dimen>
+    <dimen name="header_2">28sp</dimen>
+    <dimen name="header_3">20sp</dimen>
+
+    <dimen name="margin">12dp</dimen>
 </resources>

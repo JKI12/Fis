@@ -1,4 +1,4 @@
-package me.king.jake.fis.camera
+package me.king.jake.fis.workflows
 
 import android.app.Application
 import androidx.annotation.MainThread
@@ -8,7 +8,7 @@ import me.king.jake.fis.models.InventoryDTO
 
 class WorkflowModel(application: Application) : AndroidViewModel(application) {
     val workflowState = MutableLiveData<WorkflowState>()
-    val detectedBarcode = MutableLiveData<InventoryDTO?>()
+    val inventoryItem = MutableLiveData<InventoryDTO?>()
 
     var isCameraLive = false
         private set

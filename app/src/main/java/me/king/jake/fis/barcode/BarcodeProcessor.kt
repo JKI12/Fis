@@ -12,7 +12,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import me.king.jake.fis.Api
 import me.king.jake.fis.animations.CameraReticleAnimator
 import me.king.jake.fis.camera.FrameProcessorBase
-import me.king.jake.fis.camera.WorkflowModel
+import me.king.jake.fis.workflows.WorkflowModel
 import me.king.jake.fis.graphics.BarcodeLoading
 import me.king.jake.fis.graphics.BarcodeReticle
 import me.king.jake.fis.views.GraphicOverlay
@@ -63,7 +63,7 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
 
                     Api.sendBarcode(barcodeInCentre.rawValue!!) {
                         mainThreadHandler.post {
-                            workflowModel.detectedBarcode.value = it
+                            workflowModel.inventoryItem.value = it
                             workflowModel.setWorkflowState(WorkflowModel.WorkflowState.SEARCHED)
                         }
                     }

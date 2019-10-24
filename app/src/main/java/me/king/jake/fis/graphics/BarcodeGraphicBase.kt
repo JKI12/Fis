@@ -8,7 +8,7 @@ import me.king.jake.fis.Utils
 import me.king.jake.fis.views.GraphicOverlay
 import me.king.jake.fis.views.GraphicOverlay.Graphic
 
-interface abstract open class BarcodeGraphicBase(overlay: GraphicOverlay): Graphic(overlay) {
+open class BarcodeGraphicBase(overlay: GraphicOverlay): Graphic(overlay) {
     private val boxPaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.barcode_reticle_stroke)
         style = Style.STROKE

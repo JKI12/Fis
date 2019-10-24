@@ -14,7 +14,7 @@ import me.king.jake.fis.R
 import me.king.jake.fis.activities.MainActivity
 import me.king.jake.fis.barcode.BarcodeProcessor
 import me.king.jake.fis.camera.CameraSource
-import me.king.jake.fis.camera.WorkflowModel
+import me.king.jake.fis.workflows.WorkflowModel
 import me.king.jake.fis.views.CameraSourcePeview
 import me.king.jake.fis.views.GraphicOverlay
 import java.io.IOException

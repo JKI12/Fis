@@ -12,4 +12,14 @@
     <string name="move_closer">Move me closer!</string>
 
     <string name="inventory_view_add_new_item">Add new item</string>
+
+    <string name="input_item_info_title">Item Info</string>
+    <string name="input_properties_title">Properties</string>
+    <string name="input_barcode">Barcode</string>
+    <string name="input_title">Title</string>
+    <string name="input_generic_title">Generic title</string>
+    <string name="input_attributes">Attributes</string>
+    <string name="input_quantity">Quantity</string>
+
+    <string name="submit">Add to inventory</string>
 </resources>

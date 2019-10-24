@@ -17,7 +17,7 @@ object Api {
             .responseString {
                 _, _, (data, error) ->
                 run {
-                    var response: InventoryDTO? = null
+                    var response = InventoryDTO(barcode)
 
                     if (error != null) {
                         if (error.response.statusCode != 404) {

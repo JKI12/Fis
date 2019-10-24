@@ -1,13 +1,12 @@
 package me.king.jake.fis.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import me.king.jake.fis.R
 import me.king.jake.fis.adapters.MainPagerAdapter
-import me.king.jake.fis.camera.WorkflowModel
+import me.king.jake.fis.workflows.WorkflowModel
 import java.util.*
 
 class MainActivity : BaseActivity() {
@@ -49,7 +48,7 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    fun changePage(id: Int) {
+    private fun changePage(id: Int) {
         pager.setCurrentItem(id, true)
     }
 }

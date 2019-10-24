@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/inventory"
                 android:textColor="@color/md_white_1000"
-                android:textSize="48sp"
+                android:textSize="@dimen/header_1"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:fontFamily="@font/qs"/>
