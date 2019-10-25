@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import me.king.jake.fis.Api
 import me.king.jake.fis.R
 import me.king.jake.fis.activities.MainActivity
@@ -23,6 +24,7 @@ class ViewInventoryFragment : Fragment() {
     private val TAG = this.javaClass.canonicalName
 
     private lateinit var inventoryListAdapter: InventoryListAdapter
+    private lateinit var refreshLayout: SwipeRefreshLayout
 
     private var mainWorkflowModel: WorkflowModel? = null
     private var mainCurrentWorkflowState: WorkflowModel.WorkflowState? = null
@@ -42,6 +44,7 @@ class ViewInventoryFragment : Fragment() {
 
         setupMainWorkflowModel()
         setupRecyclerView()
+        setupRefreshLayout()
         fetchInventory()
     }
 
@@ -84,7 +87,10 @@ class ViewInventoryFragment : Fragment() {
                 Log.e(TAG, err)
             } else {
                 Log.i(TAG, "Fetched inventory, items count: ${inventory!!.size}")
-                inventoryListAdapter.updateInventoryList(inventory)
+                this@ViewInventoryFragment.activity!!.runOnUiThread {
+                    inventoryListAdapter.updateInventoryList(inventory)
+                    refreshLayout.isRefreshing = false
+                }
             }
         }}
     }
@@ -99,6 +105,25 @@ class ViewInventoryFragment : Fragment() {
             adapter = inventoryListAdapter
             setHasFixedSize(false)
             layoutManager = LinearLayoutManager(this@ViewInventoryFragment.context)
+        }
+    }
+
+    private fun setupRefreshLayout() {
+        refreshLayout = view!!.findViewById(R.id.srl_inventory)
+
+        refreshLayout.apply {
+            setOnRefreshListener {
+                fetchInventory()
+            }
+
+            setColorSchemeResources(
+                R.color.pride_red,
+                R.color.pride_orange,
+                R.color.pride_yellow,
+                R.color.pride_green,
+                R.color.pride_blue,
+                R.color.pride_purple
+            )
         }
     }
 }

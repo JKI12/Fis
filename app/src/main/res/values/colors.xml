@@ -13,4 +13,11 @@
     <color name="barcode_reticle_ripple">#9AFFFFFF</color>
 
     <color name="inventory_view_top_bar">#FF4081</color>
+
+    <color name="pride_red">#FF0018</color>
+    <color name="pride_orange">#FFA52C</color>
+    <color name="pride_yellow">#FFFF41</color>
+    <color name="pride_green">#008018</color>
+    <color name="pride_blue">#0000F9</color>
+    <color name="pride_purple">#86007D</color>
 </resources>
