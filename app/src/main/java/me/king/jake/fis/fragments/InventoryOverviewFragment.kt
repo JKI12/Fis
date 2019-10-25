@@ -43,14 +43,18 @@ class InventoryOverviewFragment: BaseOverviewFragment() {
     }
 
     private fun setupViewPager() {
-        val steps = ArrayList<Constants.OVERVIEW_STEPS>()
+        val steps = ArrayList<Constants.OverviewSteps>()
 
         if (inventoryItem!!.item == null) {
-            steps.add(Constants.OVERVIEW_STEPS.ADD_ITEM_INFO)
+            steps.add(Constants.OverviewSteps.ADD_ITEM_INFO)
         }
 
         if (inventoryItem!!.properties == null) {
-            steps.add(Constants.OVERVIEW_STEPS.ADD_PROPERTIES_INFO)
+            steps.add(Constants.OverviewSteps.ADD_PROPERTIES_INFO)
+        }
+
+        if (itemIsComplete) {
+            steps.add(Constants.OverviewSteps.OVERVIEW)
         }
 
         overviewStepsAdapter = InventoryOverviewPagerAdapter(fragmentManager!!, steps, inventoryItem!!)

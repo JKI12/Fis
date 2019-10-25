@@ -27,6 +27,10 @@
     <string name="add_to_inventory">Add to Inventory</string>
     <string name="item_info_description">It looks like this item doesn\'t exist in the system yet. Just fill in some basic information below to get started. \nThis can be edited later.</string>
     <string name="item_properties_description">This item doesn\'t exist in the inventory yet. Just fill in the details below. These properties will be able to keep track of whats currently within the household.</string>
+    <string name="overview_description">Here is an overview of \'%s\'. Select a quick action below to interact with this item or go back to view the whole inventory.</string>
 
     <string name="success_inventory">Successfully added item to inventory</string>
+    <string name="cd_fruit">Fruit</string>
+
+    <string name="overview_quantity">Quantity: %d</string>
 </resources>

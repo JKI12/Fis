@@ -16,5 +16,4 @@ class SearchFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.temp_layout, container, false)
     }
-
 }

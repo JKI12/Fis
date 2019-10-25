@@ -2,7 +2,9 @@ package me.king.jake.fis
 
 import android.graphics.RectF
 import android.hardware.Camera
+import android.text.InputType
 import android.util.Log
+import android.widget.TextView
 import me.king.jake.fis.camera.CameraSizePair
 import me.king.jake.fis.views.GraphicOverlay
 import kotlin.math.abs
@@ -56,5 +58,21 @@ object Utils {
             cx + boxWidth / 2,
             cy + boxHeight / 2
         )
+    }
+
+    fun disableTextView(view: TextView) {
+        view.apply {
+            inputType = InputType.TYPE_NULL
+            isClickable = false
+            isFocusable = false
+        }
+    }
+
+    fun enableTextView(view: TextView, newInputType: Int = InputType.TYPE_CLASS_TEXT) {
+        view.apply {
+            inputType = newInputType
+            isClickable = true
+            isFocusable = true
+        }
     }
 }

@@ -72,4 +72,20 @@ object Api {
                 }
             }
     }
+
+    fun getInventory(callback: (err: String?, inventory: ArrayList<InventoryDTO>?) -> Unit) {
+        "$BASE_URL/api/inventory"
+            .httpGet()
+            .responseString {
+                _, _, (payload, error) ->
+                run {
+                    if (error != null) {
+                        callback("GET Inventory Error: ${error.message}", null)
+                    } else {
+                        val response = gson.fromJson<ArrayList<InventoryDTO>>(payload!!)
+                        callback(null, response)
+                    }
+                }
+            }
+    }
 }

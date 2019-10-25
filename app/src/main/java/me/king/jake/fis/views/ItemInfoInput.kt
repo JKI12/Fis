@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.google.android.material.textfield.TextInputEditText
 import me.king.jake.fis.R
+import me.king.jake.fis.Utils.disableTextView
+import me.king.jake.fis.Utils.enableTextView
 import me.king.jake.fis.models.InventoryDTO
 import me.king.jake.fis.models.ItemDTO
 
@@ -13,6 +15,12 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
     private lateinit var barcodeInput: TextInputEditText
     private lateinit var titleInput: TextInputEditText
     private lateinit var genericTitleInput: TextInputEditText
+
+    var editMode: Boolean = true
+        set(value) {
+            field = value
+            update()
+        }
 
     init {
         inflate(context, R.layout.input_item_info, this)
@@ -36,22 +44,11 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
             val title = inventoryItem.item?.title ?: return
 
             setText(title)
-            inputType = InputType.TYPE_NULL
-            isClickable = false
-            isFocusable = false
         }
 
         genericTitleInput.apply {
-            val genericTitle = inventoryItem.item?.genericTitle
-
-            if (inventoryItem.item?.genericTitle.isNullOrBlank()) { //and not in edit mode
-                return
-            }
-
+            val genericTitle = inventoryItem.item?.genericTitle ?: return
             setText(genericTitle)
-            inputType = InputType.TYPE_NULL
-            isClickable = false
-            isFocusable = false
         }
     }
 
@@ -68,6 +65,16 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
         return ItemDTO().apply {
             title = titleInput.text.toString()
             genericTitle = genericTitleInput.text.toString()
+        }
+    }
+
+    private fun update() {
+        if (editMode) {
+            enableTextView(titleInput)
+            enableTextView(genericTitleInput)
+        } else {
+            disableTextView(titleInput)
+            disableTextView(genericTitleInput)
         }
     }
 }
