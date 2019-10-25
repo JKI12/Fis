@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import me.king.jake.fis.R
 import me.king.jake.fis.activities.MainActivity
+import me.king.jake.fis.models.InventoryDTO
 import me.king.jake.fis.workflows.WorkflowModel
 import java.util.*
 
@@ -45,19 +46,23 @@ class ViewInventoryFragment : Fragment() {
             when (workflowState) {
                 WorkflowModel.WorkflowState.SEARCHED -> {
                     Handler().postDelayed({
-                        val overviewFragment = InventoryOverviewFragment()
-                        overviewFragment.arguments = Bundle().apply {
-                            putParcelable("inventory_item", mainWorkflowModel!!.inventoryItem.value)
-                        }
-
-                        val transaction = fragmentManager?.beginTransaction()
-                        transaction?.setCustomAnimations(R.anim.slide_up, R.anim.slide_down, R.anim.slide_up, R.anim.slide_down)
-                        transaction?.addToBackStack(null)
-                        transaction?.add(R.id.main_wrapper, overviewFragment, "INVENTORY_OVERVIEW")?.commit()
+                        showOverviewFragment(mainWorkflowModel!!.inventoryItem.value!!)
                     }, 250)
                 }
                 else -> return@Observer
             }
         })
+    }
+
+    private fun showOverviewFragment(inventoryItem: InventoryDTO) {
+        val overviewFragment = InventoryOverviewFragment()
+        overviewFragment.arguments = Bundle().apply {
+            putParcelable(InventoryDTO.parcelableName, inventoryItem)
+        }
+
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.setCustomAnimations(R.anim.slide_up, R.anim.slide_down, R.anim.slide_up, R.anim.slide_down)
+        transaction?.addToBackStack(null)
+        transaction?.add(R.id.main_wrapper, overviewFragment, "INVENTORY_OVERVIEW")?.commit()
     }
 }

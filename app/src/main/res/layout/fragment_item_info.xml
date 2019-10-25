@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/header_2"
-        android:text="@string/input_properties_title"
+        android:text="@string/input_item_info_title"
         android:fontFamily="@font/qs"
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/margin" />
@@ -17,19 +17,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/item_properties_description"
+        android:text="@string/item_info_description"
         android:layout_marginBottom="@dimen/margin"/>
 
-    <me.king.jake.fis.views.PropertiesInput
+    <me.king.jake.fis.views.ItemInfoInput
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:id="@+id/item_properties_wrapper"
-        android:layout_marginBottom="@dimen/large_margin"/>
+        android:id="@+id/item_info_wrapper"/>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_overview_submit"
-        android:text="@string/add_to_inventory"
+        android:text="@string/add_to_system"
         android:layout_gravity="end"/>
+
 </LinearLayout>

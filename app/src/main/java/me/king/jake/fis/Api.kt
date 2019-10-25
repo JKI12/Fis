@@ -1,12 +1,17 @@
 package me.king.jake.fis
 
 import com.github.kittinunf.fuel.core.extensions.jsonBody
+import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
-import me.king.jake.fis.models.BarcodeDIO
-import me.king.jake.fis.models.InventoryDTO
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import me.king.jake.fis.models.*
 
 object Api {
     private val BASE_URL = "https://apps.jakeking.co.uk/fims"
+    private val gson = Gson()
+
+    inline fun <reified T> Gson.fromJson(json: String) = this.fromJson<T>(json, object: TypeToken<T>() {}.type)
 
     fun sendBarcode(barcode: String, callback: (inventoryModel: InventoryDTO?) -> Unit) {
         val body = BarcodeDIO(barcode).toJSON()
@@ -28,6 +33,42 @@ object Api {
                     }
 
                     callback(response)
+                }
+            }
+    }
+
+    fun postBaseItem(barcode: String, baseItem: ItemDTO, callback: (err: String?) -> Unit) {
+        val body = BaseItemDIO(barcode, baseItem.title, baseItem.genericTitle).toJSON()
+
+        "$BASE_URL/api/item"
+            .httpPost()
+            .jsonBody(body)
+            .responseString {
+                _, _, (_, error) ->
+                run {
+                    if (error != null) {
+                        callback("Base Item error: ${error.message}")
+                    } else {
+                        callback(null)
+                    }
+                }
+            }
+    }
+
+    fun postInventoryItem(barcode: String, inventoryItem: PropertiesDTO, callback: (err: String?) -> Unit) {
+        val body = InventoryItemDIO(barcode, inventoryItem.quantity).toJSON()
+
+        "$BASE_URL/api/inventory"
+            .httpPost()
+            .jsonBody(body)
+            .responseString {
+                _, _, (_, error) ->
+                run {
+                    if (error != null) {
+                        callback("Inventory Item Error: ${error.message}")
+                    } else {
+                        callback(null)
+                    }
                 }
             }
     }

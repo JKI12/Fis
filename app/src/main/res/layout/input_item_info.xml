@@ -5,15 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/header_2"
-        android:text="@string/input_item_info_title"
-        android:fontFamily="@font/qs"
-        android:textStyle="bold"
-        android:layout_marginBottom="@dimen/margin" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +34,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:id="@+id/input_title"/>
+            android:id="@+id/input_title" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

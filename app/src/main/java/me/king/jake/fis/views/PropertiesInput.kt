@@ -1,12 +1,12 @@
 package me.king.jake.fis.views
 
 import android.content.Context
-import android.text.InputType
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.google.android.material.textfield.TextInputEditText
 import me.king.jake.fis.R
 import me.king.jake.fis.models.InventoryDTO
+import me.king.jake.fis.models.PropertiesDTO
 
 class PropertiesInput(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     private lateinit var quantityInput: TextInputEditText
@@ -28,10 +28,13 @@ class PropertiesInput(context: Context, attrs: AttributeSet?) : LinearLayout(con
         }
     }
 
-    fun clearInputs() {
-        quantityInput.apply {
-            text = null
-            inputType = InputType.TYPE_CLASS_NUMBER
+    fun getItemOutput(): PropertiesDTO {
+        return PropertiesDTO().apply {
+            quantity = quantityInput.text.toString().toInt(10)
         }
+    }
+
+    fun validate(): Boolean {
+        return true
     }
 }

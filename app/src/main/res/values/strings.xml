@@ -18,10 +18,15 @@
     <string name="input_item_info_title">Item Info</string>
     <string name="input_properties_title">Properties</string>
     <string name="input_barcode">Barcode</string>
-    <string name="input_title">Title</string>
-    <string name="input_generic_title">Generic title</string>
+    <string name="input_title">Name *</string>
+    <string name="input_generic_title">Generic Name</string>
     <string name="input_attributes">Attributes</string>
-    <string name="input_quantity">Quantity</string>
+    <string name="input_quantity">Quantity *</string>
 
-    <string name="submit">Add to inventory</string>
+    <string name="add_to_system">Add to system</string>
+    <string name="add_to_inventory">Add to Inventory</string>
+    <string name="item_info_description">It looks like this item doesn\'t exist in the system yet. Just fill in some basic information below to get started. \nThis can be edited later.</string>
+    <string name="item_properties_description">This item doesn\'t exist in the inventory yet. Just fill in the details below. These properties will be able to keep track of whats currently within the household.</string>
+
+    <string name="success_inventory">Successfully added item to inventory</string>
 </resources>

@@ -37,29 +37,21 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
 
             setText(title)
             inputType = InputType.TYPE_NULL
+            isClickable = false
+            isFocusable = false
         }
 
         genericTitleInput.apply {
-            val genericTitle = inventoryItem.item?.genericTitle ?: return
+            val genericTitle = inventoryItem.item?.genericTitle
+
+            if (inventoryItem.item?.genericTitle.isNullOrBlank()) { //and not in edit mode
+                return
+            }
 
             setText(genericTitle)
             inputType = InputType.TYPE_NULL
-        }
-    }
-
-    fun clearInputs() {
-        barcodeInput.apply {
-            text = null
-        }
-
-        titleInput.apply {
-            text = null
-            inputType = InputType.TYPE_CLASS_TEXT
-        }
-
-        genericTitleInput.apply {
-            text = null
-            inputType = InputType.TYPE_CLASS_TEXT
+            isClickable = false
+            isFocusable = false
         }
     }
 

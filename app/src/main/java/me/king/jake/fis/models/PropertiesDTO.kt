@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class PropertiesDTO(
     @SerializedName("quantity")
-    val quantity: Int = 1
+    var quantity: Int = 1
 //    @SerializedName("attributes")
 //    val attributes: TypeToken<HashMap<String, String>>? = null
 ) : Parcelable

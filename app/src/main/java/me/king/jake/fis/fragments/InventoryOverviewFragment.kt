@@ -1,21 +1,25 @@
 package me.king.jake.fis.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.Fragment
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.disposables.Disposable
+import me.king.jake.fis.Constants
+import me.king.jake.fis.InventoryOverviewStore
 import me.king.jake.fis.R
 import me.king.jake.fis.adapters.InventoryOverviewPagerAdapter
 
-class InventoryOverviewFragment: Fragment() {
+class InventoryOverviewFragment: BaseOverviewFragment() {
     private lateinit var overviewStepsPager: ViewPager
-    private lateinit var overviewStepsIndicator: WormDotsIndicator
     private lateinit var overviewStepsAdapter: InventoryOverviewPagerAdapter
+    private lateinit var currentStateDisposable: Disposable
+
+    private var itemIsComplete = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +27,7 @@ class InventoryOverviewFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+
         return inflater.inflate(R.layout.fragment_inventory_overview, container, false)
     }
 
@@ -30,24 +35,75 @@ class InventoryOverviewFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         overviewStepsPager = view.findViewById(R.id.overview_steps)
-        overviewStepsIndicator = view.findViewById(R.id.overview_steps_indicator)
+        itemIsComplete = inventoryItem!!.item != null && inventoryItem!!.properties != null
 
         setupViewPager()
+        setupTitle()
+        listenToStoreEvents()
     }
 
     private fun setupViewPager() {
-        overviewStepsAdapter = InventoryOverviewPagerAdapter(fragmentManager!!)
+        val steps = ArrayList<Constants.OVERVIEW_STEPS>()
 
-        overviewStepsPager.adapter = overviewStepsAdapter
-        overviewStepsIndicator.setViewPager(overviewStepsPager)
+        if (inventoryItem!!.item == null) {
+            steps.add(Constants.OVERVIEW_STEPS.ADD_ITEM_INFO)
+        }
+
+        if (inventoryItem!!.properties == null) {
+            steps.add(Constants.OVERVIEW_STEPS.ADD_PROPERTIES_INFO)
+        }
+
+        overviewStepsAdapter = InventoryOverviewPagerAdapter(fragmentManager!!, steps, inventoryItem!!)
+
+        overviewStepsPager.apply {
+            adapter = overviewStepsAdapter
+            beginFakeDrag()
+        }
     }
 
-    private fun closeKeyboard() {
-        val view = activity!!.currentFocus
-
-        if (view != null) {
-            val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-            imm!!.hideSoftInputFromWindow(view.windowToken, 0)
+    private fun setupTitle() {
+        view!!.findViewById<TextView>(R.id.overview_title).text = when {
+            itemIsComplete -> resources.getString(R.string.overview_overview)
+            else -> resources.getString(R.string.overview_add_new)
         }
+    }
+
+    private fun nextPage() {
+        val nextPage = overviewStepsPager.currentItem + 1
+
+        if (nextPage > overviewStepsAdapter.count) {
+            return
+        }
+
+        overviewStepsPager.setCurrentItem(nextPage, true)
+        InventoryOverviewStore.setCurrentState(InventoryOverviewStore.States.IDLE)
+    }
+
+    private fun closeInventoryOverview() {
+        fragmentManager!!.popBackStack()
+        InventoryOverviewStore.setCurrentState(InventoryOverviewStore.States.IDLE)
+    }
+
+    private fun showSuccessSnackbar() {
+        val mainWrapper = activity!!.findViewById<ConstraintLayout>(R.id.main_wrapper)
+        Snackbar.make(mainWrapper, R.string.success_inventory, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun listenToStoreEvents() {
+        currentStateDisposable = InventoryOverviewStore.currentState.observable.subscribe {
+            state -> when(state) {
+                InventoryOverviewStore.States.NEXT_PAGE -> nextPage()
+                InventoryOverviewStore.States.FINISHED -> {
+                    showSuccessSnackbar()
+                    closeInventoryOverview()
+                }
+                else -> return@subscribe
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        currentStateDisposable.dispose()
     }
 }
