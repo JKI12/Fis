@@ -1,51 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-
-    <LinearLayout
-        android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/margin">
-
-        <TextView
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/overview_description"
-            android:layout_marginBottom="@dimen/margin"
-            android:fontFamily="@font/qs"
-            android:id="@+id/overview_description"/>
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/header_2"
-            android:text="@string/input_item_info_title"
-            android:fontFamily="@font/qs"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/margin" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/overview_description"
+                android:layout_marginBottom="@dimen/margin"
+                android:fontFamily="@font/qs"
+                android:id="@+id/overview_description"/>
 
-        <me.king.jake.fis.views.ItemInfoInput
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/item_info_wrapper"
-            android:layout_marginBottom="@dimen/margin" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/header_2"
+                android:text="@string/input_item_info_title"
+                android:fontFamily="@font/qs"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/header_2"
-            android:text="@string/input_properties_title"
-            android:fontFamily="@font/qs"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/margin" />
+            <me.king.jake.fis.views.ItemInfoInput
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/item_info_wrapper"
+                android:layout_marginBottom="@dimen/margin" />
 
-        <me.king.jake.fis.views.PropertiesInput
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/item_properties_wrapper"
-            android:layout_marginBottom="@dimen/large_margin"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/header_2"
+                android:text="@string/input_properties_title"
+                android:fontFamily="@font/qs"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin" />
+
+            <me.king.jake.fis.views.PropertiesInput
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/item_properties_wrapper"
+                android:layout_marginBottom="@dimen/large_margin"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_quick_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_marginTop="@dimen/margin"
+        android:paddingBottom="@dimen/large_margin"
+        android:clipToPadding="false"/>
+</LinearLayout>
