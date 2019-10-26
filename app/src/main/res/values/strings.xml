@@ -30,6 +30,7 @@
     <string name="overview_description">Here is an overview of \'%s\'. Select a quick action below to interact with this item or go back to view the whole inventory.</string>
 
     <string name="success_inventory">Successfully added item to inventory</string>
+    <string name="success_prop_quantity">Successfully updated quantity</string>
     <string name="cd_fruit">Fruit</string>
 
     <string name="overview_quantity">Quantity: %d</string>

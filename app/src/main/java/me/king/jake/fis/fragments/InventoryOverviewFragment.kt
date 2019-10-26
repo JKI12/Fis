@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.snackbar.Snackbar
 import io.reactivex.disposables.Disposable
 import me.king.jake.fis.Constants
 import me.king.jake.fis.InventoryOverviewStore
@@ -88,17 +86,12 @@ class InventoryOverviewFragment: BaseOverviewFragment() {
         InventoryOverviewStore.setCurrentState(InventoryOverviewStore.States.IDLE)
     }
 
-    private fun showSuccessSnackbar() {
-        val mainWrapper = activity!!.findViewById<ConstraintLayout>(R.id.main_wrapper)
-        Snackbar.make(mainWrapper, R.string.success_inventory, Snackbar.LENGTH_SHORT).show()
-    }
-
     private fun listenToStoreEvents() {
         currentStateDisposable = InventoryOverviewStore.currentState.observable.subscribe {
             state -> when(state) {
                 InventoryOverviewStore.States.NEXT_PAGE -> nextPage()
                 InventoryOverviewStore.States.FINISHED -> {
-                    showSuccessSnackbar()
+                    showSuccessSnackbar(stringResource = R.string.success_inventory)
                     closeInventoryOverview()
                 }
                 else -> return@subscribe

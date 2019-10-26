@@ -3,6 +3,7 @@ package me.king.jake.fis
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.fuel.httpPut
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import me.king.jake.fis.models.*
@@ -84,6 +85,24 @@ object Api {
                     } else {
                         val response = gson.fromJson<ArrayList<InventoryDTO>>(payload!!)
                         callback(null, response)
+                    }
+                }
+            }
+    }
+
+    fun updateInventoryItem(barcode: String, inventoryItem: PropertiesDTO, callback: (err: String?) -> Unit) {
+        val body = InventoryItemDIO(barcode, inventoryItem.quantity).toJSON()
+
+        "$BASE_URL/api/inventory"
+            .httpPut()
+            .jsonBody(body)
+            .responseString {
+                    _, _, (_, error) ->
+                run {
+                    if (error != null) {
+                        callback("Inventory Item Error: ${error.message}")
+                    } else {
+                        callback(null)
                     }
                 }
             }
