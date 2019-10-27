@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/header_3"
+        android:text="@string/input_attributes"
+        android:fontFamily="@font/qs"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/margin" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_attributes"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/qs"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/margin"
+        android:id="@+id/tv_no_attributes" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_attributes"
+        android:overScrollMode="never"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:text="@string/add_attribute"
+        android:layout_gravity="end"
+        app:icon="@drawable/ic_add_black_24dp"
+        android:id="@+id/btn_add_attribute"/>
+</LinearLayout>

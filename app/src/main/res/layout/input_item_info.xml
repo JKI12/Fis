@@ -32,7 +32,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:maxLines="1"
             android:id="@+id/input_title" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,4 +51,10 @@
             android:maxLines="1"
             android:id="@+id/input_generic_title"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <me.king.jake.fis.views.AttributesList
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_attributes"
+        android:layout_marginBottom="@dimen/margin" />
 </LinearLayout>

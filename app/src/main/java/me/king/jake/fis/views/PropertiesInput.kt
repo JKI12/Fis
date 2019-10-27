@@ -13,6 +13,7 @@ import me.king.jake.fis.models.PropertiesDTO
 
 class PropertiesInput(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     private lateinit var quantityInput: TextInputEditText
+    private lateinit var attributesList: AttributesList
 
     var editMode: Boolean = true
         set(value) {
@@ -28,7 +29,7 @@ class PropertiesInput(context: Context, attrs: AttributeSet?) : LinearLayout(con
         super.onFinishInflate()
 
         quantityInput = findViewById(R.id.input_quantity)
-        update()
+        attributesList = findViewById(R.id.input_attributes)
     }
 
     fun populateFields(inventoryItem: InventoryDTO) {
@@ -49,6 +50,8 @@ class PropertiesInput(context: Context, attrs: AttributeSet?) : LinearLayout(con
     }
 
     private fun update() {
+        attributesList.editMode = editMode
+
         if (editMode) {
             enableTextView(quantityInput, InputType.TYPE_CLASS_NUMBER)
         } else {

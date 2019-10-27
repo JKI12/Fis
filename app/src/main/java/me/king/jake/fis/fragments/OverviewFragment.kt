@@ -25,7 +25,6 @@ class OverviewFragment: BaseOverviewFragment() {
         return inflater.inflate(R.layout.fragment_overview, container, false)
     }
 
-
     override fun onStart() {
         super.onStart()
 

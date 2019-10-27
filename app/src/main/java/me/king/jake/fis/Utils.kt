@@ -75,4 +75,8 @@ object Utils {
             isFocusable = true
         }
     }
+
+    fun isNumber(string: String) : Boolean {
+        return string.toIntOrNull() != null
+    }
 }

@@ -15,6 +15,7 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
     private lateinit var barcodeInput: TextInputEditText
     private lateinit var titleInput: TextInputEditText
     private lateinit var genericTitleInput: TextInputEditText
+    private lateinit var attributesList: AttributesList
 
     var editMode: Boolean = true
         set(value) {
@@ -32,6 +33,7 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
         barcodeInput = findViewById(R.id.input_barcode)
         titleInput = findViewById(R.id.input_title)
         genericTitleInput = findViewById(R.id.input_generic_title)
+        attributesList = findViewById(R.id.input_attributes)
     }
 
     fun populateFields(inventoryItem: InventoryDTO) {
@@ -49,6 +51,13 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
         genericTitleInput.apply {
             val genericTitle = inventoryItem.item?.genericTitle ?: return
             setText(genericTitle)
+        }
+
+        attributesList.apply {
+            val attributes = HashMap<String, String>()
+            attributes["foo"] = "bar"
+            attributes["fiz"] = "buck"
+            updateAttributesList(attributes)
         }
     }
 
@@ -69,8 +78,10 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
     }
 
     private fun update() {
+        attributesList.editMode = editMode
+
         if (editMode) {
-            enableTextView(titleInput)
+            enableTextView(titleInput, InputType.TYPE_TEXT_FLAG_CAP_WORDS)
             enableTextView(genericTitleInput)
         } else {
             disableTextView(titleInput)

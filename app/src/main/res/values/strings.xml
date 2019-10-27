@@ -19,6 +19,7 @@
     <string name="input_properties_title">Properties</string>
     <string name="input_barcode">Barcode</string>
     <string name="input_title">Name *</string>
+    <string name="input_value">Value *</string>
     <string name="input_generic_title">Generic Name</string>
     <string name="input_attributes">Attributes</string>
     <string name="input_quantity">Quantity *</string>
@@ -34,4 +35,6 @@
     <string name="cd_fruit">Fruit</string>
 
     <string name="overview_quantity">Quantity: %d</string>
+    <string name="add_attribute">Add Attribute</string>
+    <string name="no_attributes">Currently no attributes are set</string>
 </resources>

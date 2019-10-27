@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import me.king.jake.fis.R
 import me.king.jake.fis.models.InventoryDTO
 
-class InventoryListAdapter(private var inventoryList: ArrayList<InventoryDTO>, var onClickCallback: (item: InventoryDTO) -> Unit) : RecyclerView.Adapter<InventoryListAdapter.ViewHolder>() {
+class InventoryListAdapter(private var inventoryList: ArrayList<InventoryDTO>,
+                           var onClickCallback: (item: InventoryDTO) -> Unit) :RecyclerView.Adapter<InventoryListAdapter.ViewHolder>() {
     fun updateInventoryList(newList: ArrayList<InventoryDTO>) {
         inventoryList = newList
         this.notifyDataSetChanged()
