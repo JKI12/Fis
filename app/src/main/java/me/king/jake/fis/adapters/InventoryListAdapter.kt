@@ -6,15 +6,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.king.jake.fis.R
+import me.king.jake.fis.callbacks.InventoryListDiffCallback
 import me.king.jake.fis.models.InventoryDTO
 
 class InventoryListAdapter(private var inventoryList: ArrayList<InventoryDTO>,
                            var onClickCallback: (item: InventoryDTO) -> Unit) :RecyclerView.Adapter<InventoryListAdapter.ViewHolder>() {
     fun updateInventoryList(newList: ArrayList<InventoryDTO>) {
+        val result = DiffUtil.calculateDiff(InventoryListDiffCallback(inventoryList, newList))
         inventoryList = newList
-        this.notifyDataSetChanged()
+        result.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

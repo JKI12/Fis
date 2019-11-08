@@ -54,10 +54,7 @@ class ItemInfoInput(context: Context, attrs: AttributeSet?) : LinearLayout(conte
         }
 
         attributesList.apply {
-            val attributes = HashMap<String, String>()
-            attributes["foo"] = "bar"
-            attributes["fiz"] = "buck"
-            updateAttributesList(attributes)
+//            updateAttributesList(inventoryItem.item!!)
         }
     }
 
